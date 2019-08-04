@@ -1,10 +1,6 @@
 import React, {Component} from 'react';
 import './login.scss';
 
-const emailRgx = RegExp(/^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$/);
-
-
-
 export default class Login extends Component {
     constructor (props) {
         super(props);
@@ -51,21 +47,6 @@ export default class Login extends Component {
         e.preventDefault();
         let formErrors= this.inputValidation(e.target);
         const {name, value} = e.target;
-        /* let formErrors = this.state.formErrors;
-
-        switch (name) {
-            case 'email':
-                formErrors.email =value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) ? '': 'Invalid email address';
-                break;
-
-            case 'password':
-                formErrors.password = value.length < 6 && value.length > 0 ? 'Minimum 6 characters required': ''
-                break;
-            
-            default:
-                break;
-        } */
-
         this.setState({formErrors, [name]: value}, () => {
             console.log(this.state);
         })
@@ -87,10 +68,7 @@ export default class Login extends Component {
                 break;
         }
 
-        return formErrors
-        /* this.setState({formErrors, [name]: value}, () => {
-            console.log(this.state);
-        }) */
+        return formErrors;
     }
 
     render() {

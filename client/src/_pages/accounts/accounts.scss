@@ -1,0 +1,39 @@
+#appname {
+    font-size: 50px;
+    color: #2B2B2B;
+    font-family: 'Lobster', cursive;
+    text-align: center;
+    padding: 30px 0;
+}
+
+#authform {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+@media only screen and (min-width: 600px) {
+    #appname {
+        font-size: 75px;
+        color: #2B2B2B;
+        font-family: 'Lobster', cursive;
+        text-align: center;
+        padding: 30px 0;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    #appname {
+        font-size: 100px;
+        color: #2B2B2B;
+        font-family: 'Lobster', cursive;
+        text-align: center;
+        padding: 40px 0;
+    }
+}
+
+@media only screen and (max-width:359px) {
+    #appname {
+        display: none;
+    }
+}
