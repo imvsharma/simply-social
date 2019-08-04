@@ -4,6 +4,7 @@ import {Router, Route, } from 'react-router-dom';
 import './accounts.scss';
 import history from '../../_helpers/history';
 import Login from './login/login';
+import Signup from './signup/signup';
 
 export default class Account extends Component {
     constructor (props) {
@@ -17,6 +18,7 @@ export default class Account extends Component {
                 <div id="authform">
                     <Router history={history}>
                         <Route path="/accounts/login" component={Login} />
+                        <Route path="/accounts/signup" component={Signup} />
                     </Router>
                 </div>
             </React.Fragment>

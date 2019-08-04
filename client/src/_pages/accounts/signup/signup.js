@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './login.scss';
+import './signup.scss';
 
 export default class Signup extends Component {
     constructor (props) {
@@ -91,7 +91,7 @@ export default class Signup extends Component {
         return(
             <React.Fragment>
                     <div id="signupform">  
-                        <h3 id="heading" >Welcome Back</h3>
+                        <h3 id="heading" >Create an account</h3>
                         <form autoComplete="off" onSubmit={this.handleSubmit}>
                         <div className="formrow"> 
                             <input 
@@ -108,7 +108,7 @@ export default class Signup extends Component {
                                     </svg>
                                 </span>}
                         </div>
-                        {formErrors.email.firstname > 0 && <div className="ValidationError" >{formErrors.firstname}</div>}
+                        {formErrors.firstname.length > 0 && <div className="ValidationError" >{formErrors.firstname}</div>}
 
                         <div className="formrow"> 
                             <input 
@@ -125,7 +125,7 @@ export default class Signup extends Component {
                                     </svg>
                                 </span>}
                         </div>
-                        {formErrors.email.lastname > 0 && <div className="ValidationError" >{formErrors.lastname}</div>}
+                        {formErrors.lastname.length > 0 && <div className="ValidationError" >{formErrors.lastname}</div>}
 
                         <div className="formrow"> 
                             <input 
@@ -158,16 +158,14 @@ export default class Signup extends Component {
                         </div>
                         {formErrors.password.length > 0 && <div className="ValidationError" >{formErrors.password}</div>}
                         <div className={`formrow1 ${!this.formValid()? 'unselectedBtn': 'selectedBtn'}` }>
-                            <button className={!this.formValid()? 'unselectedBtn': 'selectedBtn'} type="submit" value="Submit" disabled={!this.formValid()}>Log in</button>
+                            <button className={!this.formValid()? 'unselectedBtn': 'selectedBtn'} type="submit" value="Submit" disabled={!this.formValid()}>Signup</button>
                         </div>
                         </form>
                         <div>
-                            <div id="signupwithnum">Forget password</div>
-                            <hr id="separator" />
-                            <div id="signupwithfb">Login with Facebook</div>
+                            <div id="signupwithfb">Signup with Facebook</div>
                         </div>
                         
-                        <div id="loginlinkdiv">Don't have an account ? <span id="login">Sign up</span></div>
+                        <div id="loginlinkdiv">Already have an account ? <span id="login">Log in</span></div>
                     </div>
                 
             </React.Fragment>
