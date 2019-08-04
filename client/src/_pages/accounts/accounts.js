@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import {Router, Route} from 'react-router-dom';
+import {Router, Route, } from 'react-router-dom';
 
 import './accounts.scss';
 import history from '../../_helpers/history';
-import Login from '../login/login';
+import Login from './login/login';
 
 export default class Account extends Component {
     constructor (props) {
