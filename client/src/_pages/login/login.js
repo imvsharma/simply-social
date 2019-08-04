@@ -1,10 +1,67 @@
 import React, {Component} from 'react';
 import './login.scss';
 
+const emailRgx = RegExp(/^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$/);
+
+const formValid = formErrors => {
+    let valid = true;
+
+    Object.values(formErrors).forEach(value => {
+        value.length > 0 && (valid = false)
+    })
+
+    return valid;
+}
+
 export default class Login extends Component {
     constructor (props) {
-        super(props)
+        super(props);
+        this.state = {
+            email: null,
+            password: null,
+            formErrors: {
+                email: "",
+                password: ""
+            }
+        }
     }
+
+    handleSubmit = e => {
+        e.preventDefault();
+        if(formValid(this.state.formErrors)) {
+            console.log(`
+                --SUBMITTING--
+                Email: ${this.state.email}
+                Password: ${this.state.password}
+            `)
+        } else {
+            console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
+        }
+    }
+
+    handleChange = e => {
+        e.preventDefault();
+        const {name, value} = e.target;
+        let formErrors = this.state.formErrors;
+
+        switch (name) {
+            case 'email':
+                formErrors.email =value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) ? '': 'Invalid email address';
+                break;
+
+            case 'password':
+                formErrors.password = value.length < 6 && value.length > 0 ? 'Minimum 6 characters required': ''
+                break;
+            
+            default:
+                break;
+        }
+
+        this.setState({formErrors, [name]: value}, () => {
+            console.log(this.state);
+        })
+    }
+
     render() {
         return(
             <React.Fragment>
@@ -17,6 +74,9 @@ export default class Login extends Component {
                             <input 
                                 type="email" 
                                 placeholder="Enter your email id" 
+                                name= "email"
+                                noValidate
+                                onChange = {this.handleChange}
                             />
                             {/* <span class="validationIcon" *ngIf="emailValidation('email') === true">
                                     <svg class="svg-icon-err-fullname" viewBox="0 0 20 20">
@@ -35,6 +95,8 @@ export default class Login extends Component {
                                 type="password" 
                                 placeholder="Enter your password"
                                 name="password"
+                                noValidate
+                                onChange = {this.handleChange}
                             />
                             {/* <span class="validationIcon" *ngIf="emailValidation('password') === true">
                                 <svg class="svg-icon-err-fullname" viewBox="0 0 20 20">
