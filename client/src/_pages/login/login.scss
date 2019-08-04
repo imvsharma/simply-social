@@ -124,6 +124,78 @@ button {
     cursor: pointer;
 }
 
+.svg-icon-err-fullname {
+    width: 1em;
+    height: 1em;
+}
+
+.svg-icon-err-fullname path,
+.svg-icon-err-fullname polygon,
+.svg-icon-err-fullname rect {
+    fill: red;
+}
+
+.svg-icon-err-fullname circle {
+    stroke: red;
+    stroke-width: 2;
+}
+
+.svg-icon-correct-fullname {
+    width: 1em;
+    height: 1em;
+}
+
+.svg-icon-correct-fullname path,
+.svg-icon-correct-fullname polygon,
+.svg-icon-correct-fullname rect {
+    fill: green;
+}
+
+.svg-icon-correct-fullname circle {
+    stroke: green;
+    stroke-width: 2;
+}
+
+.validationIcon {
+    position: absolute;
+    right: 20px;
+    top: 12px;
+    width: 17px;
+}
+
+.error {
+    font-size: 13px;
+    color: #c7254e;
+    background: #f9f2f4;
+    border-radius: 3px;
+    padding: 15px;
+    margin: -26px 0 15px;
+}
+
+.ValidationError {
+    display: flex;
+    margin-left: 12px;
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    color: red;
+}
+
+.ValidationSuccess {
+    margin-left: 12px;
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    color: green;
+}
+
+.unselectedBtn {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.selectedBtn {
+    cursor: pointer;
+}
+
 
 /*For tablets*/
 
