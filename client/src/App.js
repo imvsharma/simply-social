@@ -1,5 +1,5 @@
 import React from 'react';
-import {Router, Route, Redirect} from 'react-router-dom';
+import {Router, Route} from 'react-router-dom';
 import './App.css';
 import history from './_helpers/history';
 import Account from './_pages/accounts/accounts';
@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <Router history={history}>
-        <Route exact path="/accounts" component={Account} />
+        <Route path="/accounts" component={Account} />
       </Router>
     </div>
   );

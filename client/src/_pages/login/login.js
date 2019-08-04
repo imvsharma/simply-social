@@ -76,8 +76,6 @@ export default class Login extends Component {
         const {formErrors} = this.state;
         return(
             <React.Fragment>
-                <div id="appname">SimplySocial</div>
-                <div id="authform">
                     <div id="signupform">  
                         <h3 id="heading" >Welcome Back</h3>
                         <form autoComplete="off" onSubmit={this.handleSubmit}>
@@ -123,7 +121,7 @@ export default class Login extends Component {
                         
                         <div id="loginlinkdiv">Don't have an account ? <span id="login">Sign up</span></div>
                     </div>
-                </div>
+                
             </React.Fragment>
             
         ) 
