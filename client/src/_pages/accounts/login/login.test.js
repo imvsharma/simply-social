@@ -15,13 +15,13 @@ describe('Login Component', () => {
     it('should have email state', () => {
         const component = shallow(<Login />);
         const form = component.find('input[type="email"]');
-        /* form.props().onChange({
-            target: {
-                name: 'myName',
-                value: 'myValue'
-            }
-        }) */
         expect(component.state('email')).toBeDefined()
+    })
+
+    it('should have password state', () => {
+        const component = shallow(<Login />);
+        const form = component.find('input[type="password"]');
+        expect(component.state('password')).toBeDefined()
     })
 
     it('should have update email onchange event', () => {
@@ -37,5 +37,44 @@ describe('Login Component', () => {
 
         component.instance().handleChange(mockEvent);
         expect(component.state('email')).toEqual("abc@xyz.com");
+    })
+
+    it('should have update password onchange event', () => {
+        const component = shallow(<Login />);
+        const form = component.find('input[type="password"]');
+
+        const mockEvent = {
+            target: {
+              name: "password",
+              value: "123456"
+            }
+        };
+
+        component.instance().handleChange(mockEvent);
+        expect(component.state('password')).toEqual("123456");
+    })
+
+    it('should have valid email id', () => {
+        const component = shallow(<Login />);
+        const form = component.find('input[type="email"]');
+
+        const mockEvent = {
+            target: {
+              name: "email",
+              value: "abc"
+            }
+        };
+
+        const expected = {
+            email: "abc",
+            password: null,
+            formErrors: {
+                email: 'Invalid email address',
+                password: ''
+            }
+        }
+
+        component.instance().handleChange(mockEvent);
+        expect(component.state()).toEqual(expected);
     })
 })
