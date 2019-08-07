@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Signup Component should render initial layout 1`] = `
+Array [
+  <React.Fragment>
+    <div
+      id="signupform"
+    >
+      <h3
+        id="heading"
+      >
+        Create an account
+      </h3>
+      <form
+        autoComplete="off"
+        onSubmit={[Function]}
+      >
+        <div
+          className="formrow"
+        >
+          <input
+            name="firstname"
+            noValidate={true}
+            onChange={[Function]}
+            pattern="[a-zA-Z][a-zA-Z ]+"
+            placeholder="Enter your firstname"
+            type="text"
+          />
+        </div>
+        <div
+          className="formrow"
+        >
+          <input
+            name="lastname"
+            noValidate={true}
+            onChange={[Function]}
+            pattern="[a-zA-Z][a-zA-Z ]+"
+            placeholder="Enter your lastname"
+            type="text"
+          />
+        </div>
+        <div
+          className="formrow"
+        >
+          <input
+            name="email"
+            noValidate={true}
+            onChange={[Function]}
+            placeholder="Enter your email id"
+            type="email"
+          />
+        </div>
+        <div
+          className="formrow"
+        >
+          <input
+            name="password"
+            noValidate={true}
+            onChange={[Function]}
+            placeholder="Enter your password"
+            type="password"
+          />
+        </div>
+        <div
+          className="formrow1 unselectedBtn"
+        >
+          <button
+            className="unselectedBtn"
+            disabled={true}
+            type="submit"
+            value="Submit"
+          >
+            Signup
+          </button>
+        </div>
+      </form>
+      <div>
+        <div
+          id="signupwithfb"
+        >
+          Signup with Facebook
+        </div>
+      </div>
+      <div
+        id="loginlinkdiv"
+      >
+        Already have an account ? 
+        <span
+          id="login"
+        >
+          Log in
+        </span>
+      </div>
+    </div>
+  </React.Fragment>,
+]
+`;

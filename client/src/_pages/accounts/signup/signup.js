@@ -50,7 +50,6 @@ export default class Signup extends Component {
     }
 
     handleChange = e => {
-        e.preventDefault();
         let formErrors= this.inputValidation(e.target);
         const {name, value} = e.target;
         this.setState({formErrors, [name]: value}, () => {
@@ -86,7 +85,6 @@ export default class Signup extends Component {
     }
 
     render() {
-        console.log(this.formValid())
         const {formErrors} = this.state;
         return(
             <React.Fragment>
