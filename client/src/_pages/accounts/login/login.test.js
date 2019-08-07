@@ -9,10 +9,6 @@
 import React, { Component } from 'react';
 import { shallow } from 'enzyme';
 import Login from './login';
-import { configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-
-configure({ adapter: new Adapter() });
 
 describe('Login Component', () => {
     it('should render login component', () => {
@@ -113,5 +109,17 @@ describe('Login Component', () => {
 
         component.instance().handleChange(mockEvent);
         expect(component.state()).toEqual(expected);
+    })
+
+    it('should cancelled the event when form is submitted', () => {
+        const component = shallow(<Login />);
+        let prevented = false;
+        component.find('form').simulate('submit', {
+            preventDefault:() => {
+                prevented = true
+            }
+        })
+
+        expect(prevented).toBe(true);
     })
 })

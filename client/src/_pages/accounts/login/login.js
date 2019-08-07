@@ -53,18 +53,10 @@ export default class Login extends Component {
 
     inputValidation = ({name,value}) => {
         let formErrors = this.state.formErrors;
-
-        switch (name) {
-            case 'email':
-                formErrors.email =value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) ? '': 'Invalid email address';
-                break;
-
-            case 'password':
-                formErrors.password = value.length < 6 && value.length > 0 ? 'Minimum 6 characters required': ''
-                break;
-            
-            default:
-                break;
+        if(name == 'email') {
+            formErrors.email =value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) ? '': 'Invalid email address';
+        } else if(name == 'password') {
+            formErrors.password = value.length < 6 && value.length > 0 ? 'Minimum 6 characters required': ''
         }
 
         return formErrors;
