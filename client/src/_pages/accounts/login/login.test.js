@@ -1,10 +1,23 @@
+/* 
+    1. One component should have only one snapshot. - done
+    2. Testing props.
+    3. Testing data types.
+    4. Event testing.
+    5. Testing conditions.
+    6. State's Testing.
+*/
 import React, { Component } from 'react';
 import { shallow } from 'enzyme';
 import Login from './login';
+import { configure } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+configure({ adapter: new Adapter() });
 
 describe('Login Component', () => {
     it('should render login component', () => {
-        const wrapper = shallow(<Login />)
+        const component = shallow(<Login />);
+        expect(component.exists()).toBe(true)
     });
 
     it('should render initial layout', () => {
@@ -54,7 +67,7 @@ describe('Login Component', () => {
         expect(component.state('password')).toEqual("123456");
     })
 
-    it('should have valid email id', () => {
+    it('should have error when email is invalid', () => {
         const component = shallow(<Login />);
         const form = component.find('input[type="email"]');
 
@@ -71,6 +84,30 @@ describe('Login Component', () => {
             formErrors: {
                 email: 'Invalid email address',
                 password: ''
+            }
+        }
+
+        component.instance().handleChange(mockEvent);
+        expect(component.state()).toEqual(expected);
+    })
+
+    it('should have error when password less than 6 characters', () => {
+        const component = shallow(<Login />);
+        const form = component.find('input[type="email"]');
+
+        const mockEvent = {
+            target: {
+              name: "password",
+              value: "abc"
+            }
+        };
+
+        const expected = {
+            email: null,
+            password: "abc",
+            formErrors: {
+                email: '',
+                password: 'Minimum 6 characters required'
             }
         }
 

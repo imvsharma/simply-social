@@ -44,12 +44,10 @@ export default class Login extends Component {
     }
 
     handleChange = e => {
-        //e.preventDefault();
-        console.log('handle change');
         let formErrors= this.inputValidation(e.target);
         const {name, value} = e.target;
         this.setState({formErrors, [name]: value}, () => {
-            console.log(this.state);
+            //console.log(this.state);
         })
     }
 
