@@ -1,6 +1,17 @@
-{
+/* {
     "presets": ["@babel/preset-env"],
     "plugins": [
         "@babel/plugin-proposal-class-properties"
-      ]
+    ],
+    "sourceMaps": "inline",
+} */
+
+{
+  "presets": [
+    "es2015",
+    "env"
+  ],
+  "plugins": [
+    "babel-plugin-transform-class-properties"
+],
 }

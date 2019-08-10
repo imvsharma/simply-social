@@ -1,10 +1,8 @@
-import chalk from 'chalk';
+const chalk = require('chalk')
 
-const colors = {
+exports.colors = {
     yellow: chalk.bold.yellow,
     red: chalk.bold.red,
     green: chalk.bold.green,
     cyan: chalk.bold.cyan
 }
-
-export default colors;

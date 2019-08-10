@@ -1,62 +1,65 @@
 #!/usr/bin/env node
-import http from 'http';
-import dotenv from 'dotenv';
-import chalk from 'chalk';
-import App from '../server';
-import findConfig from 'find-config';
 
-dotenv.config({ path: findConfig('.env') });
+require('dotenv').config();
+const http = require('http');
 
-const config = require(`../config/${process.env.NODE_ENV}`);
+const { config } = require(`../config/config`);
+const app = require('../server');
+const { colors } = require('../utils/colors');
 
-const normalizePort = val => {
-  const port = parseInt(val, 10);
-  if (isNaN(port)) {
-    return val;
-  }
-  if (port >= 0) {
-    return port;
-  }
-  return false;
-};
+const { PORT } = config;
+const port = normalizePort(PORT || '4000');
 
-const onError = error => {
-  if (error.syscall !== 'listen') {
-    throw error;
-  }
+app.set('port', port);
 
-  let bind = typeof port === 'string'
-    ? `Pipe ${  port}`
-    : `Port ${  port}`;
+const server = http.createServer(app);
 
-  // handle specific listen errors with friendly messages
-  switch (error.code) {
-    case 'EACCES':
-      console.error(`${bind  } requires elevated privileges`);
-      process.exit(1);
-      break;
-    case 'EADDRINUSE':
-      console.error(`${bind  } is already in use`);
-      process.exit(1);
-      break;
-    default:
-      throw error;
-  }
-};
-
-const onListening = () => {
-  console.log(chalk.yellow('=========================================='));
-  console.log(chalk.green(`Server listening on ${port}`));
-  console.log(chalk.yellow('=========================================='));
-  const addr = server.address();
-  const bind = typeof addr === 'string'
-    ? `pipe ${  addr}`
-    : `port ${  addr.port}`;
-};
-
-const port = normalizePort(config.port);
-App.set('port', port);
-const server = http.createServer(App);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+
+function normalizePort(val) {
+    const port = parseInt(val, 10);
+
+    if (isNaN(port)) {
+        return val;
+    }
+
+    if (port >= 0) {
+        return port;
+    }
+
+    return false;
+}
+
+function onError(error) {
+    if (error.syscall !== 'listen') {
+        throw error;
+    }
+
+    var bind = typeof port === 'string' ?
+        'Pipe ' + port :
+        'Port ' + port;
+
+    // handle specific listen errors with friendly messages
+    switch (error.code) {
+        case 'EACCES':
+            console.error(bind + ' requires elevated privileges');
+            process.exit(1);
+            break;
+        case 'EADDRINUSE':
+            console.error(bind + ' is already in use');
+            process.exit(1);
+            break;
+        default:
+            throw error;
+    }
+}
+
+function onListening() {
+    console.log(colors.yellow('===================================================='));
+    console.log(colors.green(`Backend server listening on ${port}`));
+    console.log(colors.yellow('===================================================='));
+    const addr = server.address();
+    const bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
+}
