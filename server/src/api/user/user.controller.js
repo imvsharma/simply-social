@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const {userModel} = require('./user.dao');
-const config = require(`../../../config/${process.env.NODE_ENV}`);
-
+const {config} = require('../../../config/config');
+const {SECRET_KEY} = config;
 const generateToken = user => {
     return jwt.sign (user, config.SECRET_KEY, {
         expiresIn: '6hr'
@@ -14,7 +14,7 @@ const setUserInfo = request => {
     }
 }
 
-module.exports = {
+exports.User = {
     getUser: (request, response, next) => {
         userModel.get({_id: request.params.id}, (err, user) => {
             if(err) {

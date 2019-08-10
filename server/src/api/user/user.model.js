@@ -2,7 +2,11 @@
 const mongoose = require('mongoose');
 const schema = mongoose.Schema;
 exports.userSchema = new schema({
-    fullname : {
+    firstname : {
+        type : String,
+        unique : false
+    },
+    lastnamename : {
         type : String,
         unique : false
     },
