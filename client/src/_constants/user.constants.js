@@ -1,0 +1,14 @@
+/**
+ * constants object contains the redux action types.
+ */
+export const userConstant = {
+    SIGNUP_REQUEST: 'USER_SIGNUP_REQUEST',
+    SIGNUP_SUCCESS: 'USER_SIGNUP_SUCCESS',
+    SIGNUP_FAILURE: 'USER_SIGNUP_FAILURE',
+
+    LOGIN_REQUEST: 'USERS_LOGIN_REQUEST',
+    LOGIN_SUCCESS: 'USERS_LOGIN_SUCCESS',
+    LOGIN_FAILURE: 'USERS_LOGIN_FAILURE',
+
+    LOGOUT: 'USERS_LOGOUT',
+}
