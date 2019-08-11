@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
-import './signup.scss';
+import {connect} from 'react-redux';
 
-export default class Signup extends Component {
+import './signup.scss';
+import { userActions } from '../../../_actions/user.actions';
+
+class Signup extends Component {
     constructor (props) {
         super(props);
         this.state = {
@@ -37,13 +40,16 @@ export default class Signup extends Component {
     handleSubmit = e => {
         e.preventDefault();
         if(this.formValid()) {
+            const {dispatch} = this.props;
+            const {firstname, lastname,email,password} = this.state;
             console.log(`
                 --SUBMITTING--
-                Firstname: ${this.state.firstname}
-                Lastname: ${this.state.lastname}
-                Email: ${this.state.email}
-                Password: ${this.state.password}
-            `)
+                Firstname: ${firstname}
+                Lastname: ${lastname}
+                Email: ${email}
+                Password: ${password}
+            `);
+            dispatch(userActions.signup({firstname,lastname,email,password}))
         } else {
             console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
         }
@@ -171,3 +177,12 @@ export default class Signup extends Component {
         ) 
     }
 }
+
+const mapStateToProps = (state) => {
+    const { registration } = state;
+    return {
+        registration
+    }
+}
+
+export default connect(mapStateToProps)(Signup)

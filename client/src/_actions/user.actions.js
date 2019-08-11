@@ -16,6 +16,18 @@ const login = data => {
     }
 }
 
+const signup = data => {
+    console.log(data)
+    return dispatch => {
+        dispatch(signupRequest(data));
+        auth.signup(data).then(user => {
+            dispatch(signupSuccess(user.token))
+        }).catch(err => {
+            dispatch(signupFailure(err))
+        })
+    }
+}
+
 const signupRequest = user => {
     return {
         type: userConstant.SIGNUP_REQUEST,
@@ -30,9 +42,10 @@ const loginRequest = user => {
     }
 }
 
-const signupSuccess = () => {
+const signupSuccess = user => {
     return {
-        type: userConstant.SIGNUP_SUCCESS
+        type: userConstant.SIGNUP_SUCCESS,
+        user
     }
 }
 
@@ -58,5 +71,6 @@ const loginFailure = error => {
 }
 
 export const userActions = {
+    signup,
     login
 }

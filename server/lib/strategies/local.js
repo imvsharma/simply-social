@@ -9,6 +9,7 @@ const option = {
 
 exports.local = {
     signup : new Strategy (option, function (req, email, password, done) {
+        console.log('req.body', req.body)
         userModel.get({
             email: email
         }, function (err, user) {
@@ -23,6 +24,7 @@ exports.local = {
                     }
                     password = hashedPassword;
                     const data = Object.assign(req.body, {email: email,password: password,})
+                    console.log(data);
                     /* const data = {
                         fullname: req.body.fullname,
                         username: req.body.username,
