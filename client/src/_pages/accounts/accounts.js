@@ -1,15 +1,14 @@
 import React, {Component} from 'react';
-import {Router, Route, } from 'react-router-dom';
+import {Router, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import './accounts.scss';
 import history from '../../_helpers/history';
 import Login from './login/login';
 import Signup from './signup/signup';
 
-export default class Account extends Component {
-    constructor (props) {
-        super (props)
-    }
+class Account extends Component {
+    
 
     render() {
         return(
@@ -26,3 +25,13 @@ export default class Account extends Component {
         ) 
     }
 }
+
+
+const mapStateToProps = (state) => {
+    const { authentication } = state;
+    return {
+      authentication
+    }
+  }
+  
+export default connect(mapStateToProps)(Account);

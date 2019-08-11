@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 import './login.scss';
 
-export default class Login extends Component {
+class Login extends Component {
     constructor (props) {
         super(props);
         this.state = {
@@ -53,9 +54,9 @@ export default class Login extends Component {
 
     inputValidation = ({name,value}) => {
         let formErrors = this.state.formErrors;
-        if(name == 'email') {
+        if(name === 'email') {
             formErrors.email =value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) ? '': 'Invalid email address';
-        } else if(name == 'password') {
+        } else if(name === 'password') {
             formErrors.password = value.length < 6 && value.length > 0 ? 'Minimum 6 characters required': ''
         }
 
@@ -117,3 +118,12 @@ export default class Login extends Component {
         ) 
     }
 }
+
+const mapStateToProps = (state) => {
+    const { authentication } = state;
+    return {
+      authentication
+    }
+  }
+  
+  export default connect(mapStateToProps)(Login);
