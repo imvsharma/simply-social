@@ -6,9 +6,9 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "server": "export NODE_ENV=development&&node server/bin/www",
-        "client": "cd client && yarn build && yarn start",
+        "client": "cd client && yarn start",
         "build": "babel server/ -d dist/",
-        "dev": "concurrently \"yarn run server\"",
+        "dev": "concurrently \"yarn run server\" \"yarn run client\"",
         "start": "yarn run dev",
         "lint": "eslint .",
         "lint:errors": "eslint . --quit",

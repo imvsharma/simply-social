@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import {userActions} from '../../../_actions/user.actions'
 import './login.scss';
 
 class Login extends Component {
     constructor (props) {
         super(props);
+        
         this.state = {
             email: null,
             password: null,
@@ -33,12 +35,15 @@ class Login extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
+        const {dispatch} = this.props;
+        const {email, password} = this.state;
         if(this.formValid()) {
             console.log(`
                 --SUBMITTING--
                 Email: ${this.state.email}
                 Password: ${this.state.password}
             `)
+            dispatch(userActions.login({email,password}))
         } else {
             console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
         }

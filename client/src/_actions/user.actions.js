@@ -9,7 +9,7 @@ const login = data => {
         dispatch(loginRequest(data.email));
         auth.login(data).then(user => {
             dispatch(loginSuccess(user.token));
-            history.push(`/home/${user.token}`);
+            //history.push(`/home/${user.token}`);
         }).catch(err => {
             dispatch(loginFailure(err));
         })
@@ -58,6 +58,5 @@ const loginFailure = error => {
 }
 
 export const userActions = {
-    signup,
     login
 }

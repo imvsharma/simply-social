@@ -32,6 +32,7 @@ export default class Auth {
             fetch(`${this.apiURL}/login`, requestOptions)
                 .then(this.handleResponse)
                 .then(user => {
+                    console.log('user')
                     localStorage.setItem('user', JSON.stringify(user.token));
                     resolve(user)
                 })
