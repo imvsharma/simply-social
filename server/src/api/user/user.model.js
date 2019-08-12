@@ -6,7 +6,7 @@ exports.userSchema = new schema({
         type : String,
         unique : false
     },
-    lastnamename : {
+    lastname : {
         type : String,
         unique : false
     },

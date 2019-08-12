@@ -38,11 +38,6 @@ class Login extends Component {
         const {dispatch} = this.props;
         const {email, password} = this.state;
         if(this.formValid()) {
-            console.log(`
-                --SUBMITTING--
-                Email: ${this.state.email}
-                Password: ${this.state.password}
-            `)
             dispatch(userActions.login({email,password}))
         } else {
             console.error("FORM INVALID - DISPLAY ERROR MESSAGE");

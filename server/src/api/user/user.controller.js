@@ -41,7 +41,6 @@ exports.User = {
 
     signup: function(request, response, next) {
         const user = setUserInfo(request.user);
-        console.log('user', user);
         response.status(201).json({
             success: true,
             message : "Signup Successfully",
