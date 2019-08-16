@@ -15,6 +15,7 @@ const getCurrentTime = () => {
     return `\x1b[36m${new Date().toUTCString()}\x1b[0m`;
 }
 
+
 const getToken = () => {
     return `[\x1b[33m${random()}\x1b[0m]`
 }
