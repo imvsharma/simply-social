@@ -4,7 +4,7 @@ const passport = require('passport');
 const {logger} = require('../lib/middlewares/logger');
 exports.appUse = (app, router) => {
     app.use(logger);
-    app.use(morgan('combined'));
+    //app.use(morgan('combined'));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended:true}));
     app.use(passport.initialize());
