@@ -1,7 +1,7 @@
 const {userRoutes} = require('./src/api/user/user.routes');
 
 const healthcheck = function(router) {
-    router.get('/', function(request, response, next) {
+    router.get('/healthcheck', function(request, response, next) {
         //filelogger.info('Hit healthcheckapi');
         response.json({
             success: true,
