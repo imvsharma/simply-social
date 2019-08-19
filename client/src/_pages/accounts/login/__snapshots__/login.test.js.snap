@@ -2,80 +2,22 @@
 
 exports[`Login Component should render initial layout 1`] = `
 Array [
-  <React.Fragment>
-    <div
-      id="signupform"
-    >
-      <h3
-        id="heading"
-      >
-        Welcome Back
-      </h3>
-      <form
-        autoComplete="off"
-        onSubmit={[Function]}
-      >
-        <div
-          className="formrow"
-        >
-          <input
-            name="email"
-            noValidate={true}
-            onChange={[Function]}
-            placeholder="Enter your email id"
-            type="email"
-          />
-        </div>
-        <div
-          className="formrow"
-        >
-          <input
-            name="password"
-            noValidate={true}
-            onChange={[Function]}
-            placeholder="Enter your password"
-            type="password"
-          />
-        </div>
-        <div
-          className="formrow1 unselectedBtn"
-        >
-          <button
-            className="unselectedBtn"
-            disabled={true}
-            type="submit"
-            value="Submit"
-          >
-            Log in
-          </button>
-        </div>
-      </form>
-      <div>
-        <div
-          id="signupwithnum"
-        >
-          Forget password
-        </div>
-        <hr
-          id="separator"
-        />
-        <div
-          id="signupwithfb"
-        >
-          Login with Facebook
-        </div>
-      </div>
-      <div
-        id="loginlinkdiv"
-      >
-        Don't have an account ? 
-        <span
-          id="login"
-        >
-          Sign up
-        </span>
-      </div>
-    </div>
-  </React.Fragment>,
+  <Context.Provider
+    value={null}
+  >
+    <Login
+      dispatch={[Function]}
+      store={
+        Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        }
+      }
+    />
+  </Context.Provider>,
 ]
 `;
