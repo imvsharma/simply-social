@@ -1,6 +1,7 @@
 import { userConstant } from "../_constants/user.constants";
-import {history} from '../_helpers/history';
+
 import Auth from "../_services/auth.service";
+import history from "../_helpers/history";
 
 const auth = new Auth();
 
@@ -9,7 +10,7 @@ const login = data => {
         dispatch(loginRequest(data.email));
         auth.login(data).then(user => {
             dispatch(loginSuccess(user.token));
-            //history.push(`/home/${user.token}`);
+            history.push(`/${user.token}`);
         }).catch(err => {
             dispatch(loginFailure(err));
         })

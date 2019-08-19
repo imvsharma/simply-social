@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import {Router, Route} from 'react-router-dom';
 import {connect} from 'react-redux'
-import './App.css';
+
 import history from './_helpers/history';
+import ProtectedRoute from './_helpers/protectedRoute';
+
 import Account from './_pages/accounts/accounts';
 import Home from './_pages/home/home';
 
-//import Login from './_pages/login/login';
+import './App.css';
 
 class App extends Component{
   
@@ -14,7 +16,7 @@ class App extends Component{
     return (
       <div className="App">
         <Router history={history}>
-          <Route exact path="/" component={Home} />
+          <ProtectedRoute exact path="/:id" component={Home} />
           <Route path="/accounts" component={Account} />
         </Router>
       </div>
