@@ -40,7 +40,7 @@ describe('Login Component', () => {
     })
 
     it('should have update email onchange event', () => {
-        //const component = shallow(<Login />);
+        component = mount(component.get(0))
         const form = component.find('input[type="email"]');
 
         const mockEvent = {
@@ -55,7 +55,7 @@ describe('Login Component', () => {
     })
 
     it('should have update password onchange event', () => {
-       // const component = shallow(<Login />);
+        component = mount(component.get(0))
         const form = component.find('input[type="password"]');
 
         const mockEvent = {
@@ -70,7 +70,7 @@ describe('Login Component', () => {
     })
 
     it('should have error when email is invalid', () => {
-        //const component = shallow(<Login />);
+        component = mount(component.get(0))
         const form = component.find('input[type="email"]');
 
         const mockEvent = {
@@ -94,7 +94,7 @@ describe('Login Component', () => {
     })
 
     it('should have error when password less than 6 characters', () => {
-       // const component = shallow(<Login />);
+        component = mount(component.get(0))
         const form = component.find('input[type="email"]');
 
         const mockEvent = {
@@ -118,7 +118,7 @@ describe('Login Component', () => {
     })
 
     it('should cancelled the event when form is submitted', () => {
-       // const component = shallow(<Login />);
+        component = mount(component.get(0))
         let prevented = false;
         component.find('form').simulate('submit', {
             preventDefault:() => {
