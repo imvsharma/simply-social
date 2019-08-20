@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Account component should render initial layout 1`] = `
+Array [
+  <Context.Provider
+    value={null}
+  >
+    <Account
+      dispatch={[Function]}
+      store={
+        Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        }
+      }
+    />
+  </Context.Provider>,
+]
+`;
