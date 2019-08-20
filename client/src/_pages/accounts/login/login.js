@@ -15,6 +15,7 @@ class Login extends Component {
                 password: ""
             }
         }
+        console.log(props, this.state)
     }
 
     formValid = () => {

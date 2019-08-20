@@ -7,8 +7,8 @@
     6. State's Testing.
 */
 import React, { Component } from 'react';
-import { shallow } from 'enzyme';
-import Login from './login';
+import { shallow, mount } from 'enzyme';
+import Login, { Login as OriginalLogin } from './login';
 import configureStore from 'redux-mock-store';
 
 describe('Login Component', () => {
@@ -30,17 +30,12 @@ describe('Login Component', () => {
     })
 
     it('should have email state', () => {
-        const component = shallow(<Login store={store} />).dive();
-        console.log("=============================");
-        console.log(component.state());
-        console.log("===============================")
-        const form = component.find('input[type="email"]');
+        component = mount(component.get(0))
         expect(component.state('email')).toBeDefined()
     })
 
     it('should have password state', () => {
-       // const component = shallow(<Login />);
-        const form = component.find('input[type="password"]');
+        component = mount(component.get(0))
         expect(component.state('password')).toBeDefined()
     })
 
