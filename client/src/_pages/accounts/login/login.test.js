@@ -6,9 +6,9 @@
     5. Testing conditions.
     6. State's Testing.
 */
-import React, { Component } from 'react';
+import React from 'react';
 import { shallow, mount } from 'enzyme';
-import Login, { Login as OriginalLogin } from './login';
+import Login from './login';
 import configureStore from 'redux-mock-store';
 
 describe('Login Component', () => {

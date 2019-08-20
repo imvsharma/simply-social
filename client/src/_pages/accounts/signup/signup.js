@@ -58,9 +58,7 @@ class Signup extends Component {
     handleChange = e => {
         let formErrors= this.inputValidation(e.target);
         const {name, value} = e.target;
-        this.setState({formErrors, [name]: value}, () => {
-            console.log(this.state);
-        })
+        this.setState({formErrors, [name]: value}, () => {})
     }
 
     inputValidation = ({name,value}) => {

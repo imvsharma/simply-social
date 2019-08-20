@@ -7,13 +7,17 @@
     6. State's Testing.
 */
 import React, { Component } from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import Signup from './signup';
+import configureStore from 'redux-mock-store';
 
 describe('Signup Component', () => {
-    let component =''
+    const mockStore = configureStore();
+    let store, component;
+
     beforeEach(() => {
-        component = shallow(<Signup />);
+        store = mockStore();
+        component = shallow(<Signup store={store} />)
     })
 
     it('should render signup component', () => {
@@ -25,18 +29,22 @@ describe('Signup Component', () => {
     })
 
     it('should have firstname state', () => {
+        component = mount(component.get(0));
         expect(component.state('firstname')).toBeDefined()
     })
 
     it('should have lastname state', () => {
+        component = mount(component.get(0));
         expect(component.state('lastname')).toBeDefined()
     })
 
     it('should have email state', () => {
+        component = mount(component.get(0));
         expect(component.state('email')).toBeDefined()
     })
 
     it('should have password state', () => {
+        component = mount(component.get(0));
         expect(component.state('password')).toBeDefined()
     })
 
@@ -47,6 +55,7 @@ describe('Signup Component', () => {
               value: "Vaibhav"
             }
         };
+        component = mount(component.get(0));
         component.find('input[name="firstname"]').simulate('change', mockEvent);
         expect(component.state('firstname')).toEqual("Vaibhav");
     })
@@ -58,6 +67,7 @@ describe('Signup Component', () => {
               value: "Sharma"
             }
         };
+        component = mount(component.get(0));
         component.find('input[name="lastname"]').simulate('change', mockEvent);
         expect(component.state('lastname')).toEqual("Sharma");
     })
@@ -69,6 +79,7 @@ describe('Signup Component', () => {
               value: "abc@xyz.com"
             }
         };
+        component = mount(component.get(0));
         component.find('input[type="email"]').simulate('change', mockEvent);
         expect(component.state('email')).toEqual("abc@xyz.com");
     })
@@ -80,7 +91,7 @@ describe('Signup Component', () => {
               value: "123456"
             }
         };
-
+        component = mount(component.get(0));
         component.find('input[type="password"]').simulate('change', mockEvent);
         expect(component.state('password')).toEqual("123456");
     })
