@@ -10,6 +10,7 @@ export default class Post extends React.Component {
                 <div className="post-header">
                     <UserProfilePic />
                 </div>
+                <div className="post"></div>
             </div>
         )
     }

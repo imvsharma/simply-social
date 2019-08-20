@@ -4,9 +4,23 @@
     background-color: #fff;
     border: 1px solid #e5e5e5;
     border-radius: 2px;
+    position: relative;
 }
 
 .post-header {
     border-bottom: 1px solid #f3f3f3;
     padding: 14px 20px;
+}
+
+.post {
+    background-image: url(https://res.cloudinary.com/taskmanagerreact/image/upload/v1566323970/68428867_2661040287259783_3072642521503891456_n_w1dwne.jpg);
+    background-size: cover;
+    overflow: hidden;
+    position: absolute;
+    top: 70px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
 }
