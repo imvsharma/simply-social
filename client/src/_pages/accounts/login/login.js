@@ -15,7 +15,6 @@ class Login extends Component {
                 password: ""
             }
         }
-        console.log(props, this.state)
     }
 
     formValid = () => {
@@ -41,7 +40,7 @@ class Login extends Component {
         if(this.formValid()) {
             dispatch(userActions.login({email,password}))
         } else {
-            console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
+            //console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
         }
     }
 
