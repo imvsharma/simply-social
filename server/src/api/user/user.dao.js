@@ -1,6 +1,6 @@
 /* user api dao functions */
 var mongoose = require('mongoose');
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcryptjs');
 var {userSchema} = require('./user.model');
 
 userSchema.statics = {
