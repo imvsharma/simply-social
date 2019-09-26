@@ -1,9 +1,10 @@
 const bodyParser = require('body-parser');
 const graphQLHTTP = require('express-graphql');
 const {buildSchema} = require('graphql');
-const morgan = require('morgan');
 const passport = require('passport');
 const {logger} = require('../lib/middlewares/logger');
+const graphQLSchema = require('../graphql/schema/index');
+const graphQLResolver = require('../graphql/resolvers/index');
 exports.appUse = (app, router) => {
     var schema = buildSchema(`
                     type Query {
@@ -31,7 +32,7 @@ exports.appUse = (app, router) => {
         next();
     });
     app.use('/api/v1', router);
-    app.use('/graphql', graphQLHTTP({graphiql: true, schema, rootValue: root}))
+    app.use('/graphql', graphQLHTTP({graphiql: true, schema: graphQLSchema, rootValue: graphQLResolver}))
     app.use(function(err, req, res, next) {
         console.log(err)
         console.error(err.message); // Log error message in our server's console

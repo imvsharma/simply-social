@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs');
 const {userModel} = require('../../src/api/user/user.dao');
 const jwt = require('jsonwebtoken');
+const secretkey = require('../../config/config').config.SECRET_KEY;
 
 module.exports = {
     login: async ({email, password}) => {
