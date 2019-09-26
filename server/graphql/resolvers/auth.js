@@ -1,7 +1,9 @@
 const bcrypt = require('bcryptjs');
-const {userModel} = require('../../src/api/user/user.dao');
 const jwt = require('jsonwebtoken');
 const secretkey = require('../../config/config').config.SECRET_KEY;
+const {userModel} = require('../../src/api/user/user.dao');
+const {decrypt} = require('../../helpers/decrypt');
+
 
 module.exports = {
     login: async ({email, password}) => {
@@ -11,7 +13,7 @@ module.exports = {
             throw new Error('User not found');
         }
 
-        const isEqual = await bcrypt.compare(password, user.password);
+        const isEqual = await decrypt(password, user.password);
         if(!isEqual) {
             throw new Error('Password mismatch');
         }
