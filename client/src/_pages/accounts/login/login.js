@@ -2,7 +2,12 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {userActions} from '../../../_actions/user.actions'
 import './login.scss';
-
+/**
+ *
+ *
+ * @class Login
+ * @extends {Component}
+ */
 class Login extends Component {
     constructor (props) {
         super(props);
@@ -16,8 +21,12 @@ class Login extends Component {
             }
         }
     }
-
-    formValid = () => {
+/**
+ *
+ *
+ * @memberof Login
+ */
+formValid = () => {
         const {formErrors, ...rest} = this.state;
         let valid = true;
         // validate forms errors being empty
@@ -32,8 +41,12 @@ class Login extends Component {
     
         return valid;
     }
-
-    handleSubmit = e => {
+/**
+ *
+ *
+ * @memberof Login
+ */
+handleSubmit = e => {
         e.preventDefault();
         const {dispatch} = this.props;
         const {email, password} = this.state;
@@ -43,8 +56,12 @@ class Login extends Component {
             //console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
         }
     }
-
-    handleChange = e => {
+/**
+ *
+ *
+ * @memberof Login
+ */
+handleChange = e => {
         let formErrors= this.inputValidation(e.target);
         const {name, value} = e.target;
         this.setState({formErrors, [name]: value}, () => {

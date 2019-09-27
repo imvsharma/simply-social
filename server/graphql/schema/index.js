@@ -1,22 +1,14 @@
 const {buildSchema} = require('graphql');
+const fileSystem = require('fs');
+const userType = fileSystem.readFileSync(`${__dirname}/type/user.graphql`, 'utf8');
+const AuthDataType = fileSystem.readFileSync(`${__dirname}/type/authdata.graphql`, 'utf8');
+const RootQuery = fileSystem.readFileSync(`${__dirname}/query/root.graphql`, 'utf8');
+
 
 module.exports = buildSchema(`
-    type User {
-        _id: ID!
-        email: String!
-        password: String
-    }
-
-    type AuthData {
-        userId: ID!
-        token: String!
-        tokenExpiration: String!
-    }
-
-    type RootQuery {
-        login(email: String! , password: String!): AuthData!
-    }
-
+    ${userType}
+    ${AuthDataType}
+    ${RootQuery}
     schema {
         query: RootQuery
     }
