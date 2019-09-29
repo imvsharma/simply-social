@@ -1,3 +1,4 @@
 type RootQuery {
     login(email: String! , password: String!): AuthData!
+    getUser(id: String, email: String): User
 }
