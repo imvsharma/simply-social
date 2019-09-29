@@ -1,0 +1,5 @@
+type Response {
+    success: String!
+    message: String!
+    statusCode: Int!
+}

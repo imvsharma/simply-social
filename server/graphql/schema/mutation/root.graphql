@@ -1,3 +1,4 @@
 type RootMutation {
     createUser(user: UserInput): User
+    updatePassword(id: String, password: String): Response
 }

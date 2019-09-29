@@ -1,4 +1,3 @@
-const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const secretkey = require('../../config/config').config.SECRET_KEY;
 const {userModel} = require('../../src/api/user/user.dao');
@@ -49,6 +48,36 @@ module.exports = {
             const savedUser = await user.save();
             return {
                 _id: savedUser._id
+            }
+        }
+    },
+
+    updatePassword: async args => {
+        console.log(args);
+        const user = await userModel.findOne({_id: args.id});
+        console.log('user', user);
+        if(!user) {
+            return {
+                success: false,
+                message: "User not found",
+                statusCode: 404
+            }
+        } else {
+            //query,{$set : updateData},{new : true}
+            console.log('user found');
+            const hashedPassword = await encrypt(args.password);
+            console.log('hash',hashedPassword);
+            const updatedUser = await userModel.findOneAndUpdate({_id: args.id}, {$set: {password: hashedPassword}}, {new: true});
+            console.log(updatedUser);
+            if(!updatedUser) {
+                return {
+                    message: "user not updated"
+                }
+            } else {
+                return {
+                    success: true,
+                    message: "password updated successfully"
+                }
             }
         }
     }
