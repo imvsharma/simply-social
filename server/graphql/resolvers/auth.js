@@ -1,8 +1,9 @@
-const jwt = require('jsonwebtoken');
-const secretkey = require('../../config/config').config.SECRET_KEY;
+
+
 const {userModel} = require('../../src/api/user/user.dao');
 const {decrypt} = require('../../helpers/decrypt');
 const {encrypt} = require('../../helpers/encrypt');
+const {generateToken} = require('../../helpers/generateToken');
 
 module.exports = {
     login: async ({email, password}) => {
@@ -17,12 +18,7 @@ module.exports = {
             throw new Error('Password mismatch');
         }
 
-        const token = jwt.sign({
-            userId: user.id,
-            email: user.email
-        }, secretkey, {
-            expiresIn: '1h'
-        });
+        const token = await generateToken(user._id)
 
         return {
             userId: user.id,
@@ -53,9 +49,7 @@ module.exports = {
     },
 
     updatePassword: async args => {
-        console.log(args);
         const user = await userModel.findOne({_id: args.id});
-        console.log('user', user);
         if(!user) {
             return {
                 success: false,
@@ -63,12 +57,8 @@ module.exports = {
                 statusCode: 404
             }
         } else {
-            //query,{$set : updateData},{new : true}
-            console.log('user found');
             const hashedPassword = await encrypt(args.password);
-            console.log('hash',hashedPassword);
             const updatedUser = await userModel.findOneAndUpdate({_id: args.id}, {$set: {password: hashedPassword}}, {new: true});
-            console.log(updatedUser);
             if(!updatedUser) {
                 return {
                     message: "user not updated"
