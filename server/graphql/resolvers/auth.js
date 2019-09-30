@@ -53,6 +53,7 @@ module.exports = {
 
     createUser: async args => {
         const user = await userModel.findOne({ email: args.user.email });
+        console.log('user', user)
         if (user) {
             throw new Error("User already Exists");
         } else {
@@ -67,7 +68,8 @@ module.exports = {
 
             const savedUser = await user.save();
             return {
-                _id: savedUser._id
+                _id: savedUser._id,
+                email: savedUser.email
             };
         }
     },

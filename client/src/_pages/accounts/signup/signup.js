@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 
 import './signup.scss';
 import { userActions } from '../../../_actions/user.actions';
+import createUserMutation from '../../../mutations/createUserMutation';
 
 class Signup extends Component {
     constructor (props) {
@@ -37,7 +38,36 @@ class Signup extends Component {
         return valid;
     }
 
+
     handleSubmit = e => {
+        e.preventDefault();
+        if(this.formValid()) {
+            //const {dispatch} = this.props;
+            const {firstname, lastname,email,password} = this.state;
+            console.log(`
+                --SUBMITTING--
+                Firstname: ${firstname}
+                Lastname: ${lastname}
+                Email: ${email}
+                Password: ${password}
+            `);
+            const user = {
+                firstname,
+                lastname,
+                email,
+                password
+            }
+            createUserMutation(user, ()=> {
+                console.log('mutation completed');
+            })
+
+            //dispatch(userActions.signup({firstname,lastname,email,password}))
+        } else {
+            console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
+        }
+    }
+
+    /* handleSubmit = e => {
         e.preventDefault();
         if(this.formValid()) {
             const {dispatch} = this.props;
@@ -53,7 +83,7 @@ class Signup extends Component {
         } else {
             console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
         }
-    }
+    } */
 
     handleChange = e => {
         let formErrors= this.inputValidation(e.target);

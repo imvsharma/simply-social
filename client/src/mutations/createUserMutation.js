@@ -1,14 +1,16 @@
 //  step 1
-import {commitMutation, graphql} from 'react-relay';
-import environment from '../../Environment';
+import graphql from 'babel-plugin-relay/macro';
+import {commitMutation} from 'react-relay';
+import environment from '../Environment';
 
 //  step 2
-const mutation = graphql`
-    mutation {
-        createUser(user:$UserInput){
+const createUserMutation = graphql`
+    mutation createUserMutation($User: UserInput) {
+        createUser(user: $User) {
+            email
             _id
+        }
     }
-}
 `
 
 //  step 3
@@ -28,13 +30,16 @@ export default (user, callback) => {
     commitMutation(
         environment,
         {
-            mutation,
+            createUserMutation,
             variables,
             //  step 6
             onCompleted: () => {
                 callback();
             },
-            onError: err => console.error(err)
+            onError: err => {
+                console.error("Error--------------------->", err);
+            }
         }
     )
 }
+

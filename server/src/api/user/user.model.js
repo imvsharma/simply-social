@@ -10,10 +10,6 @@ exports.userSchema = new schema({
         type : String,
         unique : false
     },
-    username : {
-        type : String,
-        unique : true
-    },
     email : {
         type : String,
         unique : true,

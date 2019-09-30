@@ -36,5 +36,6 @@ input UserInput {
   lastname: String!
   email: String!
   password: String!
+  username: String!
 }
 
