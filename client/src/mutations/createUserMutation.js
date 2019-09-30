@@ -4,7 +4,7 @@ import {commitMutation} from 'react-relay';
 import environment from '../Environment';
 
 //  step 2
-const createUserMutation = graphql`
+const mutation = graphql`
     mutation createUserMutation($User: UserInput) {
         createUser(user: $User) {
             email
@@ -22,15 +22,16 @@ export default (user, callback) => {
             firstname,
             lastname,
             email,
-            password
+            password,
+            clientMutationId:""
         }
     };
-
+    console.log('variables', variables);
     //  step 6
     commitMutation(
         environment,
         {
-            createUserMutation,
+            mutation,
             variables,
             //  step 6
             onCompleted: () => {

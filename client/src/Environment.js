@@ -16,6 +16,7 @@ const network = Network.create((operation, variables) => {
     }).then(response => {
         return response.json()
     }).catch(err => {
+        console.log("Error in network create", err);
         return err;
     })
 });
