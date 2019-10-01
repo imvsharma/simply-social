@@ -1,23 +1,32 @@
+import createUserMutation from '../mutations/createUserMutation';
+
 export default class Auth {
     apiURL = 'http://localhost:5000/api/v1/user';
 
+    
 
     signup = data => {
-        const requestOptions = {
+        /* const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
-        };
+        }; */
 
         return new Promise((resolve, reject) => {
-            fetch(`${this.apiURL}/signup`, requestOptions)
+            createUserMutation(data).then(user => {
+                console.log(user);
+                resolve(user)
+            }).catch(err => {
+                console.log('error', err)
+            })
+            /* fetch(`${this.apiURL}/signup`, requestOptions)
                 .then(this.handleResponse)
                 .then(user => {
                     resolve(user)
                 })
                 .catch(err => {
                     reject(err)
-                })
+                }) */
         })
     }
 

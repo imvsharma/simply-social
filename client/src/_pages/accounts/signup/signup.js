@@ -42,7 +42,7 @@ class Signup extends Component {
     handleSubmit = e => {
         e.preventDefault();
         if(this.formValid()) {
-            //const {dispatch} = this.props;
+            const {dispatch} = this.props;
             const {firstname, lastname,email,password} = this.state;
             console.log(`
                 --SUBMITTING--
@@ -58,16 +58,16 @@ class Signup extends Component {
                 password
             }
 
-            createUserMutation(user).then(data => {
+            /* createUserMutation(user).then(data => {
                 console.log(data);
             }).catch(err => {
                 console.log('error', err)
-            })
+            }) */
             /* createUserMutation(user, ()=> {
                 console.log('mutation completed');
             }) */
 
-            //dispatch(userActions.signup({firstname,lastname,email,password}))
+            dispatch(userActions.signup(user))
         } else {
             console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
         }

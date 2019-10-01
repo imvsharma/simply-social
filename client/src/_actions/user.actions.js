@@ -22,7 +22,7 @@ const signup = data => {
     return dispatch => {
         dispatch(signupRequest(data));
         auth.signup(data).then(user => {
-            dispatch(signupSuccess(user.token))
+            dispatch(signupSuccess(user))
         }).catch(err => {
             dispatch(signupFailure(err))
         })
