@@ -8,7 +8,7 @@ const {dbURL} = config;
 
 
 module.exports =() => {
-    mongoose.connect(dbURL, {useNewUrlParser:true,useCreateIndex: true});
+    mongoose.connect(dbURL, {useNewUrlParser:true,useCreateIndex: true, useUnifiedTopology: true});
     mongoose.connection.on('connected', function(){
         /* console.log(colors.yellow('===================================================='));
         console.log(colors.green("Mongoose default connection is open and connected"));

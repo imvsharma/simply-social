@@ -20,8 +20,9 @@
         "redux-thunk": "^2.3.0"
     },
     "scripts": {
+        "schema": "get-graphql-schema http://localhost:5000/graphql > ./schema.graphql",
         "relay": "relay-compiler --src ./src --schema ./schema.graphql",
-        "start": "react-scripts start",
+        "start": "yarn run schema && yarn run relay && react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test --verbose",
         "eject": "react-scripts eject"

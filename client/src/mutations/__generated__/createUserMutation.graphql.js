@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 0938260fa319c87900add3ddd30d7dff
+ * @relayHash 3f56bb52a7e5e0e7cd2e5d6f065043c1
  */
 
 /* eslint-disable */
@@ -14,7 +14,7 @@ export type UserInput = {|
   lastname: string,
   email: string,
   password: string,
-  username: string,
+  username?: ?string,
 |};
 export type createUserMutationVariables = {|
   User?: ?UserInput

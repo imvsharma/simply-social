@@ -1,4 +1,5 @@
 import createUserMutation from '../mutations/createUserMutation';
+import loginMutation from '../mutations/loginMutation';
 
 export default class Auth {
     apiURL = 'http://localhost:5000/api/v1/user';
@@ -31,14 +32,21 @@ export default class Auth {
     }
 
     login = data => {
-        const requestOptions = {
+        /* const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
-        };
+        }; */
 
         return new Promise((resolve, reject) => {
-            fetch(`${this.apiURL}/login`, requestOptions)
+            loginMutation(data).then(user => {
+                console.log(user);
+                localStorage.setItem('user', JSON.stringify(user.login.token));
+                resolve(user.login)
+            }).catch(err => {
+                console.log('error', err)
+            })
+            /* fetch(`${this.apiURL}/login`, requestOptions)
                 .then(this.handleResponse)
                 .then(user => {
                     console.log('user')
@@ -47,7 +55,7 @@ export default class Auth {
                 })
                 .catch(err => {
                     reject(err)
-                })
+                }) */
         })
     }
 

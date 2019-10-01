@@ -17,11 +17,11 @@ type Response {
 
 type RootMutation {
   createUser(user: UserInput): User
+  login(email: String!, password: String!): AuthData!
   updatePassword(id: String, password: String): Response
 }
 
 type RootQuery {
-  login(email: String!, password: String!): AuthData!
   getUser(id: String, email: String): User
 }
 
@@ -36,6 +36,6 @@ input UserInput {
   lastname: String!
   email: String!
   password: String!
-  username: String!
+  username: String
 }
 
