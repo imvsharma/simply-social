@@ -57,9 +57,15 @@ class Signup extends Component {
                 email,
                 password
             }
-            createUserMutation(user, ()=> {
-                console.log('mutation completed');
+
+            createUserMutation(user).then(data => {
+                console.log(data);
+            }).catch(err => {
+                console.log('error', err)
             })
+            /* createUserMutation(user, ()=> {
+                console.log('mutation completed');
+            }) */
 
             //dispatch(userActions.signup({firstname,lastname,email,password}))
         } else {

@@ -23,7 +23,7 @@ module.exports = {
         if (!user) {
             throw new Error("User not found");
         }
-
+        
         return {
             _id: user._id,
             email: user.email
@@ -67,6 +67,7 @@ module.exports = {
             });
 
             const savedUser = await user.save();
+            console.log('saveduser', savedUser);
             return {
                 _id: savedUser._id,
                 email: savedUser.email

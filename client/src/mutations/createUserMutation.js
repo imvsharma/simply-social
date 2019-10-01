@@ -14,7 +14,40 @@ const mutation = graphql`
 `
 
 //  step 3
-export default (user, callback) => {
+
+export default user => {
+    return new Promise( (resolve, reject) => {
+        const {firstname, lastname, email, password} = user;
+        const variables = {
+            User: {
+                firstname,
+                lastname,
+                email,
+                password,
+            }
+        };
+
+        commitMutation(
+            environment,
+            {
+                mutation,
+                variables,
+                onCompleted: (res, err) => {
+                    if(err) {
+                        console.error('Error in onCompleted in createUserMutation ---->', err);
+                        return reject(err);
+                    }
+                    console.log('createUserMutation response n OnCompleted', res);
+                    resolve(res);
+                },
+                onError: err => {
+                    console.error('Error in onError in createUserMutation ---->', err);
+                }
+            })
+    } )
+}
+
+/* export default (user, callback) => {
     const {firstname, lastname, email, password} = user;
     //  step 4
     const variables = {
@@ -43,4 +76,4 @@ export default (user, callback) => {
         }
     )
 }
-
+ */
