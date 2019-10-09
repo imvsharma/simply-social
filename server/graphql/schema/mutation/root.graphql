@@ -3,4 +3,5 @@ type RootMutation {
     login(email: String!, password: String!): AuthData!
     updatePassword(id: String, password: String): Response
     createPost(postInput:PostInput):Post
+    
 }
