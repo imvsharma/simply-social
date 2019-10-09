@@ -1,0 +1,7 @@
+type Post {
+    _id: ID!
+    title: String!
+    descriptions: String!
+    date: String!
+    author: User! 
+}

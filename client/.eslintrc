@@ -1,0 +1,9 @@
+{
+    "plugins": [
+        "disable",
+        "react"
+     ],
+     "rules": {
+      "import/imports-first": [ "warn", "DISABLE-absolute-first" ],
+     }
+   }

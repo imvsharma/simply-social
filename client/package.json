@@ -45,6 +45,7 @@
     "devDependencies": {
         "babel-plugin-relay": "^6.0.0",
         "enzyme-adapter-react-16": "^1.14.0",
+        "eslint-plugin-react": "^7.16.0",
         "graphql": "^14.5.8",
         "relay-compiler": "^6.0.0"
     }

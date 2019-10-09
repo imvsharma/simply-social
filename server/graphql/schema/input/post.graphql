@@ -1,0 +1,6 @@
+# input for post entity
+input PostInput {
+    title: String!
+    descriptions: String!
+    date: String!
+}
