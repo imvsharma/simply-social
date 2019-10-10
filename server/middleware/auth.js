@@ -3,7 +3,7 @@ const { config } = require(`../config/config`);
 const {SECRET_KEY} = config;
 
 
-module.exports = (request, response, next) => {
+exports.isAuth = (request, response, next) => {
     const authHeader = request.headers.authorization;
     if(!authHeader) {
         request.isAuth = false;
@@ -33,7 +33,6 @@ module.exports = (request, response, next) => {
     }
 
     request.isAuth = true;
-    request.userId = decodedToken.userId
+    request.userId = decodedToken._id;
     next();
-
 }

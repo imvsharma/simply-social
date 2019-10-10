@@ -1,3 +1,4 @@
+
 const bodyParser = require('body-parser');
 const graphQLHTTP = require('express-graphql');
 const {buildSchema} = require('graphql');
@@ -6,19 +7,8 @@ const {logger} = require('../lib/middlewares/logger');
 const graphQLSchema = require('../graphql/schema/index');
 const graphQLResolver = require('../graphql/resolvers/index');
 const cors = require('cors');
+const {isAuth} = require('../middleware/auth');
 exports.appUse = (app, router) => {
-    var schema = buildSchema(`
-                    type Query {
-                        hello: String
-                    }
-                `)
-
-                var root = {
-                    hello: () => {
-                      return 'Hello world!';
-                    },
-                  };
-                  
     app.use(logger);
     //app.use(morgan('combined'));
     app.use(bodyParser.json());
@@ -34,6 +24,7 @@ exports.appUse = (app, router) => {
     }); */
     app.use('/api/v1', router);
     app.use( cors() );
+    app.use(isAuth);
     app.use('/graphql', graphQLHTTP({graphiql: true, schema: graphQLSchema, rootValue: graphQLResolver}))
     app.use(function(err, req, res, next) {
         console.log(err)
